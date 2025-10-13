@@ -13,7 +13,6 @@ jobs:
     defaults:
       run:
         shell: pwsh
-        working-directory: WindowsOcrApp
 
     steps:
       - name: Checkout repository
@@ -25,13 +24,17 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore WindowsOcrApp.csproj
+        run: dotnet restore WindowsOcrApp.sln
 
       - name: Build
-        run: dotnet build WindowsOcrApp.csproj --configuration Release --no-restore
+        run: dotnet build WindowsOcrApp.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test WindowsOcrApp.sln --configuration Release --no-build
 
       - name: Publish
         run: dotnet publish WindowsOcrApp.csproj --configuration Release --runtime win-x64 --self-contained false --output publish
+        working-directory: WindowsOcrApp
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
