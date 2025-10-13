@@ -1,0 +1,34 @@
+name: Build Windows OCR App
+
+on:
+  push:
+    branches: [ work ]
+  pull_request:
+    branches: [ work ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore WindowsOcrApp/WindowsOcrApp.csproj
+
+      - name: Build
+        run: dotnet build WindowsOcrApp/WindowsOcrApp.csproj --configuration Release --no-restore
+
+      - name: Publish artifact
+        run: dotnet publish WindowsOcrApp/WindowsOcrApp.csproj --configuration Release --no-build --output publish
+
+      - name: Upload published files
+        uses: actions/upload-artifact@v4
+        with:
+          name: WindowsOcrApp
+          path: publish
