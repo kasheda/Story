@@ -20,7 +20,7 @@ public partial class MainWindow : Window
 
     private void OpenImageButton_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new System.Windows.Forms.OpenFileDialog
+        var dialog = new Microsoft.Win32.OpenFileDialog
         {
             Title = "Open Image",
             Filter = "Image Files|*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff"
