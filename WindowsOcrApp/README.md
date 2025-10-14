@@ -11,15 +11,14 @@ This WPF application provides a graphical interface to extract text from images 
 ## Getting Started
 1. Install the [Tesseract OCR Windows installer](https://github.com/UB-Mannheim/tesseract/wiki).
 2. Ensure the `tessdata` directory from the installation is available (default: `C:\Program Files\Tesseract-OCR\tessdata`).
-3. From the repository root (where `WindowsOcrApp.sln` lives), restore packages, build, and run the tests:
+3. Restore packages and build the project:
    ```bash
-   dotnet restore WindowsOcrApp.sln
-   dotnet build WindowsOcrApp.sln
-   dotnet test WindowsOcrApp.sln
+   dotnet restore
+   dotnet build
    ```
-4. Launch the application from the repository root:
+4. Launch the application:
    ```bash
-   dotnet run --project WindowsOcrApp/WindowsOcrApp.csproj
+   dotnet run
    ```
 
 When running for the first time, verify that the tessdata path shown in the header matches your installation. Use the **Browse** button if you installed Tesseract elsewhere.
@@ -31,7 +30,7 @@ If you would like a distributable `.exe` without relying on `dotnet run`, publis
 dotnet publish -c Release -r win-x64 --self-contained false
 ```
 
-This produces `WindowsOcrApp.exe` inside `bin/Release/net6.0-windows/win-x64/publish/`. Copy that folder to another Windows PC with the appropriate .NET Desktop Runtime and Tesseract tessdata assets. Use the `--self-contained true` option to bundle the runtime at the cost of a larger download.
+This produces `WindowsOcrApp.exe` inside `bin/Release/net8.0-windows/win-x64/publish/`. Copy that folder to another Windows PC with the appropriate .NET Desktop Runtime and Tesseract tessdata assets. Use the `--self-contained true` option to bundle the runtime at the cost of a larger download.
 
 Because the container environment used for development does not include the .NET SDK or Windows build tools, an executable cannot be generated directly here. Running the publish command above on your Windows machine will create the runnable file.
 
