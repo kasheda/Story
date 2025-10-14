@@ -8,13 +8,13 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Spacing="10">
-            <Button x:Name="OpenImageButton" Content="Open Image" Width="110" Click="OpenImageButton_Click" />
-            <Button x:Name="SnipButton" Content="Capture Snip" Width="110" Click="SnipButton_Click" />
-            <Button x:Name="RunOcrButton" Content="Run OCR" Width="110" Click="RunOcrButton_Click" />
+        <StackPanel Orientation="Horizontal" >
+            <Button x:Name="OpenImageButton" Content="Open Image" Margin="0,0,10,0" Width="110" Click="OpenImageButton_Click" />
+            <Button x:Name="SnipButton" Content="Capture Snip" Margin="0,0,10,0" Width="110" Click="SnipButton_Click" />
+            <Button x:Name="RunOcrButton" Content="Run OCR" Margin="0,0,10,0" Width="110" Click="RunOcrButton_Click" />
             <TextBlock VerticalAlignment="Center" Margin="20,0,0,0" Text="Tessdata Path:" />
             <TextBox x:Name="TessdataPathTextBox" Width="220" Margin="5,0,0,0" />
-            <Button x:Name="BrowseTessdataButton" Content="Browse" Width="70" Click="BrowseTessdataButton_Click" />
+            <Button x:Name="BrowseTessdataButton" Content="Browse" Margin="0,0,10,0" Width="70" Click="BrowseTessdataButton_Click" />
         </StackPanel>
 
         <Border Grid.Row="1" BorderBrush="#CCC" BorderThickness="1" CornerRadius="4" Margin="0,12,0,12">
