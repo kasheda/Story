@@ -20,7 +20,7 @@ public partial class MainWindow : Window
 
     private void OpenImageButton_Click(object sender, RoutedEventArgs e)
     {
-        var dialog = new OpenFileDialog
+        var dialog = new System.Windows.Forms.OpenFileDialog
         {
             Title = "Open Image",
             Filter = "Image Files|*.png;*.jpg;*.jpeg;*.bmp;*.tif;*.tiff"
@@ -36,13 +36,13 @@ public partial class MainWindow : Window
     {
         if (_currentImage is null)
         {
-            MessageBox.Show("Please load or capture an image first.", "No Image", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.MessageBox.Show("Please load or capture an image first.", "No Image", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
         if (string.IsNullOrWhiteSpace(TessdataPathTextBox.Text))
         {
-            MessageBox.Show("Please provide a tessdata directory path.", "Missing tessdata", MessageBoxButton.OK, MessageBoxImage.Warning);
+            System.Windows.MessageBox.Show("Please provide a tessdata directory path.", "Missing tessdata", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
 
@@ -60,7 +60,7 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             OcrResultTextBox.Text = string.Empty;
-            MessageBox.Show($"Failed to run OCR: {ex.Message}", "OCR Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            System.Windows.MessageBox.Show($"Failed to run OCR: {ex.Message}", "OCR Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         finally
         {
