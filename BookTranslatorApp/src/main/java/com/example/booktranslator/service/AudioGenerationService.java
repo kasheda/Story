@@ -25,8 +25,12 @@ public class AudioGenerationService {
     private final Path outputDirectory;
 
     public AudioGenerationService(OpenAiClient openAiClient) {
+        this(openAiClient, Paths.get("audio-output"));
+    }
+
+    AudioGenerationService(OpenAiClient openAiClient, Path outputDirectory) {
         this.openAiClient = openAiClient;
-        this.outputDirectory = Paths.get("audio-output");
+        this.outputDirectory = outputDirectory;
         try {
             Files.createDirectories(outputDirectory);
         } catch (IOException ex) {
