@@ -1,0 +1,178 @@
+:root {
+    font-family: "Segoe UI", sans-serif;
+    color: #1f2933;
+    background-color: #f5f7fa;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+}
+
+header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 2rem 3rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0 0 0.5rem;
+}
+
+header p {
+    margin: 0;
+}
+
+main {
+    padding: 2rem 3rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.form-group-inline .form-group {
+    flex: 1 1 200px;
+}
+
+button.primary,
+.primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+button.primary:hover,
+.primary:hover {
+    background-color: #1d4ed8;
+}
+
+.error {
+    color: #dc2626;
+    font-size: 0.9rem;
+}
+
+.error-banner {
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    color: #b91c1c;
+}
+
+.helper {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.info {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.results {
+    display: grid;
+    gap: 1rem;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.05);
+}
+
+.result h2 {
+    margin: 0;
+}
+
+.result p {
+    margin: 0.25rem 0;
+}
+
+.muted {
+    color: #6b7280;
+}
+
+.back {
+    color: #bfdbfe;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+    vertical-align: top;
+}
+
+.actions {
+    margin-top: 1rem;
+}
+
+audio {
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #6b7280;
+}

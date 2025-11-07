@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Translation Result</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/translation.js}" defer></script>
+</head>
+<body>
+<header>
+    <h1 th:text="${translationResult.book().title()}">Translation Result</h1>
+    <p th:text="${'Segments translated: ' + segmentCount + ' (' + segmentationMode + ')'}"></p>
+    <a class="back" th:href="@{/}">← Translate another book</a>
+</header>
+<main>
+    <section class="card">
+        <h2>Sentence-aligned translation</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>English</th>
+                    <th>Spanish</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="segment : ${translationResult.segments()}">
+                    <td th:text="${segment.index()}"></td>
+                    <td th:text="${segment.source()}"></td>
+                    <td th:text="${segment.translated()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="card" th:if="${translationResult.audioFileName()}">
+        <h2>Listen to the translation</h2>
+        <audio controls th:src="@{'/audio/' + ${translationResult.audioFileName()}}"></audio>
+        <div class="actions">
+            <a class="primary" th:href="@{'/audio/' + ${translationResult.audioFileName()} + '/download'}">Download audio file</a>
+        </div>
+    </section>
+    <section class="card" th:if="${translationResult.audioFileName() == null}">
+        <h2>Audio generation unavailable</h2>
+        <p>Audio narration could not be generated. Ensure the OpenAI speech model is enabled and try again.</p>
+    </section>
+</main>
+</body>
+</html>
