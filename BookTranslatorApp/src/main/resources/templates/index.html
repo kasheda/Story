@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Translator</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Public Domain Book Translator</h1>
+    <p>Translate classic literature from English to Spanish with sentence-aligned output.</p>
+</header>
+<main>
+    <section class="card">
+        <form th:action="@{/search}" th:object="${translationRequest}" method="post">
+            <div class="form-group">
+                <label for="title">Book title</label>
+                <input type="text" id="title" th:field="*{title}" placeholder="Enter a book title">
+                <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+            </div>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="segments">Segments</label>
+                    <input type="number" id="segments" min="1" max="200" th:field="*{segments}">
+                    <div class="helper">Number of lines, pages, or chapters to translate.</div>
+                    <div class="error" th:if="${#fields.hasErrors('segments')}" th:errors="*{segments}"></div>
+                </div>
+                <div class="form-group">
+                    <label for="segmentationMode">Segmentation</label>
+                    <select id="segmentationMode" th:field="*{segmentationMode}">
+                        <option value="sentences">Sentences</option>
+                        <option value="pages">Pages (approximate)</option>
+                        <option value="chapters">Chapters</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="primary">Search public domain library</button>
+        </form>
+        <div class="info">
+            <p>The app searches Project Gutenberg via the Gutendex API. Only public domain books are returned. If a title
+                cannot be found, you will be prompted to search again.</p>
+        </div>
+    </section>
+    <section th:if="${error}" class="error-banner">
+        <p th:text="${error}"></p>
+    </section>
+</main>
+<footer>
+    <p>Powered by OpenAI for translation and narration.</p>
+</footer>
+</body>
+</html>
