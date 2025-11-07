@@ -1,0 +1,35 @@
+name: Book Translator App CI
+
+on:
+  push:
+    branches: [ work ]
+  pull_request:
+    branches: [ work ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: BookTranslatorApp
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Validate Maven wrapper
+        run: mvn -v
+
+      - name: Install dependencies
+        run: mvn -B -ntp dependency:go-offline
+
+      - name: Build and test
+        run: mvn -B -ntp verify
